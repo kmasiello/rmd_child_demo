@@ -1,0 +1,13 @@
+# Child Document
+<!-- Use this ref.label code chunk to call objects from the analysis for inclusion in the summary -->
+```{r, ref.label="calculations", echo = FALSE}
+```
+
+This is a summary of a thrilling analysis of `r params$component` component failure rates before and after implementation cleaning workbenches as a manufacturing practice.  Analysis methods include Whizbang, LeastWrong, and Short-Tall methodolgies.  Results showed that that cleaning workbenches between daily manufacturing runs decreased failure rates of quality assurance acceptance tests by an average of **`r paste0(round(daily_qa_improvement*100,0),"%")`**.  Cleaning workbenches between operator shifts showed an average of **`r paste0(round(shiftchange_qa_improvement*100,0),"%")`** improvement. 
+
+Recommended action is to:  
+
+* Revise operator manual to include standardized cleaning methodology
+* Clean workbenches daily (minimum)
+
+This analysis was limited in scope to only foofy components.  Additional studies are merited to explore frequency of cleaning, measurable effect of using sterile cleaning cloths, and effect of cleaning procedures on bedazzled components.

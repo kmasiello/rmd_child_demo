@@ -1,0 +1,47 @@
+---
+title: "Parent Document"
+subtitle: "In which we show parameters and variables passed to child documents"
+author: "Katie Masiello"
+date: "30 Mar 2021"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: flatly
+params:
+  level_of_detail:
+    label: Level_of_detail
+    value: Include Summary
+    input: radio
+    choices:
+    - Include Summary
+    - Only Analysis
+  component:
+    label: component
+    value: foofy
+    input: radio
+    choices:
+      - foofy
+      - whatdat
+      - guppy
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<!-- The Child document below will only appear if Level_of_detail includes Summary -->
+```{r exec_summary, child=if (params$level_of_detail == "Include Summary") 'child.Rmd'}
+```
+
+
+Data analysis for `r params$component` fail rates:
+
+```{r calculations}
+dirty_fail_rate <- 0.70 
+daily_clean_fail_rate <- 0.86
+shiftchange_clean_fail_rate <- 0.91
+daily_qa_improvement <- (daily_clean_fail_rate - dirty_fail_rate) / dirty_fail_rate
+shiftchange_qa_improvement <- (shiftchange_clean_fail_rate - dirty_fail_rate) / dirty_fail_rate
+```
+
